@@ -1,8 +1,5 @@
 --[[
-    The main shared PlayerData module, (a combination of clientPlayerData, serverPlayerData, playerStats)
     Initialized on Require, must be initialized on Client and Server
-
-    PlayerData.Stats will be ClientReadOnly
 ]]
 local RunService = game:GetService("RunService")
 if RunService:IsClient() then
