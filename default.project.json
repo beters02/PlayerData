@@ -1,0 +1,25 @@
+{
+  "name": "PlayerData Version 1",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "PlayerData": {
+        "$ignoreUnknownInstances": true,
+        "$path": "PlayerData"
+      }
+    },
+
+    "ServerScriptService": {
+      "$path": "src/ServerScriptService",
+      "$ignoreUnknownInstances": true
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/StarterPlayerScripts",
+        "$ignoreUnknownInstances": true
+      }
+    }
+  }
+}
