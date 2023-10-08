@@ -7,24 +7,24 @@ and any changes made to the PlayerData on the server will be automatically repli
 
 Initialize by requiring the module on Server and Client.
 
--- Server
+## Server
 
-## Get the player's PlayerData
+#### Get the player's PlayerData
 ```lua
 PlayerData:Get(player: Player)
 ```
 
-## Set the PlayerData table
+#### Set the PlayerData table
 ```lua
 PlayerData:Set(player: Player, new: PlayerData)
 ```
 
-## Set the table of a PlayerData Key
+#### Set the table of a PlayerData Key
 ```lua
 PlayerData:SetKey(player: Player, key: string, new: table)
 ```
 
-## Set the Variable of a PlayerData table's key via path
+#### Set the Variable of a PlayerData table's key via path
 ```lua
 PlayerData:SetPath(player: Player, path: string, new: any)
 
@@ -32,7 +32,7 @@ PlayerData:SetPath(player: Player, path: string, new: any)
 PlayerData:SetPath(player, "options.FOV", 90)
 ```
 
-## Save the PlayerData to the DataStore
+#### Save the PlayerData to the DataStore
 ```lua
     PlayerData:Save(player)
 ```
