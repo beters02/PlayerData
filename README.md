@@ -34,30 +34,27 @@ PlayerData:SetPath(player, "options.FOV", 90)
 
 #### Save the PlayerData to the DataStore
 ```lua
-    PlayerData:Save(player)
+PlayerData:Save(player)
 ```
 
+## Client
 
-
-
--- Client
-
-## Get the player's Client PlayerData Cache
+#### Get the player's Client PlayerData Cache
 ```lua
 PlayerData:Get()
 ```
 
-## Set the PlayerData table
+#### Set the PlayerData table
 ```lua
 PlayerData:Set(new: PlayerData)
 ```
 
-## Set the table of a PlayerData Key
+#### Set the table of a PlayerData Key
 ```lua
 PlayerData:SetKey(key: string, new: table)
 ```
 
-## Set the Variable of a PlayerData table's key via path
+#### Set the Variable of a PlayerData table's key via path
 ```lua
 PlayerData:SetPath(path: string, new: any)
 
@@ -65,7 +62,7 @@ PlayerData:SetPath(path: string, new: any)
 PlayerData:SetPath("options.FOV", 90)
 ```
 
-## Save the Client PlayerData Cache to the Server Cache
+#### Save the Client PlayerData Cache to the Server Cache
 ```lua
-    PlayerData:Save()
+PlayerData:Save()
 ```
