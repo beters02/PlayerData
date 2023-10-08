@@ -8,12 +8,14 @@
     The server will run checks to be sure that the ClientReadOnly values will not be edited.
 
     Save()
+        -- There isnt much need to call Save() since changes will be automatically saved to the server.
         -- Saving does NOT push the Data to DataStores.
         -- The data will be sent in a RemoteFunction to DataStores when the Client leaves.
 ]]
 
 -- CONFIG
 local clientWaitSec = 3
+local changedUpdateSec = 3 -- amount of time waited for new change before saving
 --
 
 local Players = game:GetService("Players")
@@ -25,6 +27,8 @@ local Shared = require(script.Parent:WaitForChild("Shared"))
 local Events = script.Parent:WaitForChild("Events")
 local RemoteFunction = Events:WaitForChild("RemoteFunction")
 local RemoteEvent = Events:WaitForChild("RemoteEvent")
+local player = Players.LocalPlayer
+local conn = {}
 
 export type Client = {
     Get: (self: Client) -> Shared.PlayerData,
@@ -50,7 +54,7 @@ end
 function Client:Set(new)
     Client:Get()
     Client._cache = new
-    Client._changed = true
+    Client._changed = tick() + changedUpdateSec
     return new
 end
 
@@ -116,9 +120,21 @@ function _waitForCache()
     return _pd
 end
 
+function _update()
+    if not Players:FindFirstChild(player.Name) then
+        conn[1]:Disconnect()
+        conn[2]:Disconnect()
+        return
+    end
+    if Client._changed and tick() >= Client._changed then
+        Client._changed = false
+        Client:Save()
+    end
+end
+
 --@run
 _getFromServer(true)
-RemoteEvent.OnClientEvent:Connect(_remoteClientEvent)
-RunService.RenderStepped:Connect(function() if Client._changed then Client._changed = false Client:Save() end end)
+conn[1] = RemoteEvent.OnClientEvent:Connect(_remoteClientEvent)
+conn[2] = RunService.RenderStepped:Connect(_update)
 
 return Client
