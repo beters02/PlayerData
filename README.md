@@ -68,4 +68,6 @@ PlayerData:Save()
 ```
 
 ## Todo
-- Implement Changed listeners on Client
+- Make ChangedKey/ChangedPathValue fire whenever its parent changed is fired.
+(KeyPathValue Changed fires its parent KeyChanged)
+(KeyChanged Fires its parent Changed)
