@@ -71,3 +71,4 @@ PlayerData:Save()
 - Make ChangedKey/ChangedPathValue fire whenever its parent changed is fired.
 (KeyPathValue Changed fires its parent KeyChanged)
 (KeyChanged Fires its parent Changed)
+also changed is not firing on keypath and key woops
